@@ -1,0 +1,40 @@
+* {
+   box-sizing: border-box;
+}
+
+.container {
+   width: 800px;
+}
+
+.tiket {
+   display: flex;
+   justify-content: space-between;
+   height: 40px;
+   border: 1px solid #ccc;
+   align-items: center;
+
+}
+
+.add-tiket-container {
+   margin-bottom: 20px;
+   display: flex;
+   flex-direction: row-reverse;
+}
+
+.done-btn-container {
+   width: 50px;
+   text-align: center;
+}
+
+.edit-container {
+   width: 150px;
+   display: flex;
+   justify-content: space-between;
+   margin: 0 20px;
+   background-color: #ccc;
+}
+
+.content {
+   width: 600px;
+   background-color: #aaa;
+}
