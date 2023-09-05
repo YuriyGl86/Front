@@ -10,13 +10,13 @@
 <h1>5. HTTP</h1>
 
 <div class="container">
-  <div class="add-tiket-container">
-    <button class="add-tiket-btn"> Добавить тикет </button>
+  <div class="add-ticket-container">
+    <button class="add-ticket-btn"> Добавить тикет </button>
   </div>
-  <div class="all-tikets-container">
-    <div class="tiket">
-      <div class="done-btn-container">V</div>
-      <div class="content">описание заявки краткое</div>
+  <div class="all-tickets-container">
+    <div class="ticket">
+      <div class="done-btn-container checked"></div>
+      <div class="content">ТИКЕТ ИЗ HTML, ЕГО НЕТ НА СЕРВЕРЕ</div>
       <div class="edit-container">
         <div class="date">04/09/2023</div>
         <div class="edit">edit</div>
@@ -25,6 +25,27 @@
     </div>
   </div>
 </div>
+
+<div class="modalBackground add-form-modal">
+  <div class="modalActive">      
+      <div class="modalWindow">
+        <form class="add-ticket-form">
+          <label for="name">Краткое описание:</label>
+          <input name="name" type="text">
+
+          <label for="description">Подробное описание:</label>
+          <textarea class="description" name="description" type="text"></textarea>
+          <div class="add-form-buttons">
+            <button class="button add-form-cancel-button">Отмена</button>
+            <button class="button add-form-ok-button">OK</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+
 
 </body>
 </html>
