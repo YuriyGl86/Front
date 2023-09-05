@@ -14,13 +14,19 @@
     <button class="add-ticket-btn"> Добавить тикет </button>
   </div>
   <div class="all-tickets-container">
+
     <div class="ticket">
-      <div class="done-btn-container checked"></div>
-      <div class="content">ТИКЕТ ИЗ HTML, ЕГО НЕТ НА СЕРВЕРЕ</div>
-      <div class="edit-container">
-        <div class="date">04/09/2023</div>
-        <div class="edit">edit</div>
-        <div class="delete">X</div>
+      <div class="main-ticket-content">
+        <div class="done-btn-container checked"></div>
+        <div class="content">ТИКЕТ ИЗ HTML, ЕГО НЕТ НА СЕРВЕРЕ</div>
+        <div class="edit-container">
+          <div class="date">04.09.23 19:58</div>
+          <div class="edit"></div>
+          <div class="delete"></div>
+        </div>
+      </div>
+      <div class="description-ticket">
+        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
       </div>
     </div>
   </div>
@@ -29,6 +35,29 @@
 <div class="modalBackground add-form-modal">
   <div class="modalActive">      
       <div class="modalWindow">
+        <div class="form-title">
+          <span>Добавить тикет</span>          
+        </div>
+        <form class="add-ticket-form">
+          <label for="name">Краткое описание:</label>
+          <input name="name" type="text">
+
+          <label for="description">Подробное описание:</label>
+          <textarea class="description" name="description" type="text"></textarea>
+          <div class="add-form-buttons">
+            <button class="button add-form-cancel-button">Отмена</button>
+            <button class="button add-form-ok-button">OK</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<div class="modalBackground edit-form-modal">
+  <div class="modalActive">      
+      <div class="modalWindow">
+        <div class="form-title">
+          <span>Изменить тикет</span>          
+        </div>
         <form class="add-ticket-form">
           <label for="name">Краткое описание:</label>
           <input name="name" type="text">

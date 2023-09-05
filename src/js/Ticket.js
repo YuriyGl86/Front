@@ -1,6 +1,7 @@
 export default class Ticket{
     constructor(elem){
-        this.container = elem
+        this.container = elem.querySelector('.all-tickets-container')
+        this.addButton = elem.querySelector('.add-ticket-btn')
         this.onTicketClick = this.onTicketClick.bind(this)
         this.init()
     }
@@ -18,6 +19,10 @@ export default class Ticket{
         })
 
         this.container.addEventListener('click', this.onTicketClick)
+        this.addButton.addEventListener('click', () => {
+            document.querySelector('.add-form-modal').classList.add('show')
+        })
+
     }
 
 
@@ -25,13 +30,18 @@ export default class Ticket{
         const ticket = document.createElement('div')
         ticket.classList.add('ticket')
         ticket.innerHTML = `
-        <div class="done-btn-container"></div>
-        <div class="content"></div>
-        <div class="edit-container">
-            <div class="date"></div>
-            <div class="edit">edit</div>
-            <div class="delete">X</div>
-        </div>
+        <div class="main-ticket-content">
+            <div class="done-btn-container"></div>
+            <div class="content"></div>
+            <div class="edit-container">
+                <div class="date"></div>
+                <div class="edit"></div>
+                <div class="delete"></div>
+            </div>
+            </div>
+            <div class="description-ticket">
+
+            </div>
         `
         ticket.querySelector('.content').innerText = data.name
         ticket.querySelector('.date').innerText = Ticket.formatDate(new Date(data.created))
@@ -76,16 +86,65 @@ export default class Ticket{
             this.removeTicket(event)
         } else if(event.target.closest('.done-btn-container')){
             this.checkTicket(event)
+        } else if(event.target.closest('.edit')){
+            this.editTicket(event)
+        } else {
+            this.showDetailedTicket(event)
         }
     }
 
     checkTicket(event){
         event.target.closest('.done-btn-container').classList.toggle('checked')
         const ticket = event.target.closest('.ticket')
-        const URL = 'http://localhost:7071/' + ticket.dataset.id
+        const URL = 'http://localhost:7071/' + '?id=' + ticket.dataset.id
         fetch(URL, {
             method: 'PATCH',
         }).then(response => response.text())
         .then(data => console.log(data))
+    }
+
+    editTicket(event){
+        const modal = document.querySelector('.edit-form-modal')
+        const ticket = event.target.closest('.ticket')
+        const nameModal = modal.querySelector('input')
+        const descriptionModal = modal.querySelector('textarea')
+
+        modal.classList.add('show')
+        nameModal.value = ticket.querySelector('.content').innerText
+        this.getFullInfoById(ticket.dataset.id)
+        .then(data => {
+            descriptionModal.value = data.description
+        })
+
+        
+
+
+        // event.target.closest('.done-btn-container').classList.toggle('checked')
+        // const ticket = event.target.closest('.ticket')
+        // const URL = 'http://localhost:7071/' + '?id=' + ticket.dataset.id
+        // fetch(URL, {
+        //     method: 'PATCH',
+        // }).then(response => response.text())
+        // .then(data => console.log(data))
+    }
+
+    showDetailedTicket(event){
+        
+        const ticket = event.target.closest('.ticket')
+        const descriptionTicket= ticket.querySelector('.description-ticket')
+        descriptionTicket.classList.toggle('show')
+        if(descriptionTicket.innerText === ''){
+            this.getFullInfoById(ticket.dataset.id)
+            .then(data => {                
+                descriptionTicket.innerText = data.description
+            })
+        }        
+    }
+
+    getFullInfoById(id){
+        const URL = 'http://localhost:7071/' + '?method=ticketById&id=' + id
+        return fetch(URL, {method: 'GET'})
+                .then(response => response.json())
+            
     }
 }

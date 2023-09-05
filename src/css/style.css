@@ -12,11 +12,27 @@ html {
 
 .ticket {
    display: flex;
+   flex-direction: column;
+   border: 1px solid #ccc;
+   /* align-items: center; */
+   /* justify-content: space-between;
+   height: 40px; */
+}
+
+.main-ticket-content {
+   display: flex;
    justify-content: space-between;
    height: 40px;
-   border: 1px solid #ccc;
+   /* border: 1px solid #ccc; */
    align-items: center;
+}
 
+.description-ticket {
+   padding-left: 35px;
+   padding-bottom: 7px;
+   width: 550px;
+   display: none;
+   /* height: 50px; */
 }
 
 .add-ticket-container {
@@ -41,17 +57,28 @@ html {
    background-image: url('../img/checkbox-circle-svgrepo-com.svg');
 }
 
+.edit {
+   width: 35px;
+   height: 35px;
+   text-align: center;
+   background-image: url('../img/edit-svgrepo-com.svg');
+   color: black;
+   background-size: 25px 25px;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
 .edit-container {
    width: 200px;
    display: flex;
    justify-content: space-between;
    margin: 0 20px;
-   background-color: #ccc;
+   /* background-color: #ccc; */
 }
 
 .content {
    width: 550px;
-   background-color: #aaa;
+   /* background-color: #aaa; */
 }
 
 .modalBackground {
@@ -72,7 +99,7 @@ html {
 .modalActive {
     position: absolute;
     width: 800px;
-    height: 300px;
+    height: 330px;
     top: calc(50% - 150px);
     left: calc(50% - 250px);
     border-radius: 10px;
@@ -130,4 +157,24 @@ input {
 
 .show {
    display: block;
+}
+
+.date {
+   line-height: 40px;
+}
+
+.delete {
+      width: 35px;
+   height: 35px;
+   text-align: center;
+   background-image: url('../img/cross-circle-svgrepo-com.svg');
+   color: black;
+   background-size: 25px 25px;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.form-title {
+   text-align: center;
+   margin-bottom: 20px;
 }

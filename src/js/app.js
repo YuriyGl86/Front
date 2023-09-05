@@ -1,8 +1,7 @@
 import Ticket from "./Ticket"
 
-const ticket = new Ticket(document.querySelector('.all-tickets-container'))
+const ticket = new Ticket(document.querySelector('.container'))
 
-const addTicketButton = document.querySelector('.add-ticket-btn')
 const form = document.querySelector('.add-ticket-form')
 const addTicketCancelButton = document.querySelector('.add-form-cancel-button')
 
@@ -10,9 +9,7 @@ addTicketCancelButton.addEventListener('click', (event) => {
     event.target.closest('.modalBackground').classList.remove('show')
 })
 
-addTicketButton.addEventListener('click', () => {
-    document.querySelector('.add-form-modal').classList.add('show')
-})
+
 
 form.addEventListener('submit', (event) => {
     event.preventDefault()
